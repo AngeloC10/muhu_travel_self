@@ -1,0 +1,126 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = "postgresql://postgres:b0b28fc380d8@localhost:5432/muhu_travel"
+}
+
+model User {
+  id        String   @id @default(cuid())
+  name      String
+  email     String   @unique
+  password  String
+  role      UserRole @default(AGENT)
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("users")
+}
+
+enum UserRole {
+  ADMIN
+  AGENT
+}
+
+model Client {
+  id        String   @id @default(cuid())
+  fullName  String
+  docType   String   // DNI, PASAPORTE, CE
+  docNumber String
+  email     String?
+  phone     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  reservations Reservation[]
+
+  @@unique([docType, docNumber])
+  @@map("clients")
+}
+
+model Employee {
+  id        String   @id @default(cuid())
+  fullName  String
+  position  String
+  email     String   @unique
+  phone     String
+  hireDate  DateTime
+  status    String   @default("ACTIVE") // ACTIVE, INACTIVE
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("employees")
+}
+
+model Provider {
+  id          String   @id @default(cuid())
+  companyName String
+  serviceType String   // Transport, Hotel, Guide, Restaurant
+  contactName String
+  email       String?
+  phone       String?
+  status      String   @default("ACTIVE") // ACTIVE, INACTIVE
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("providers")
+}
+
+model TourPackage {
+  id            String   @id @default(cuid())
+  name          String   @unique
+  description   String?
+  price         Float
+  durationDays  Int
+  maxPax        Int
+  destinations  String[] // JSON array stored as text
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  reservations Reservation[]
+
+  @@map("tour_packages")
+}
+
+model Passenger {
+  id          String   @id @default(cuid())
+  firstName   String
+  lastName    String
+  nationality String   @default("Peru")
+  docType     String   // DNI, PASAPORTE
+  docNumber   String
+  birthDate   DateTime
+  gender      String   // M, F, O
+  
+  reservationId String
+  reservation   Reservation @relation(fields: [reservationId], references: [id], onDelete: Cascade)
+
+  @@map("passengers")
+}
+
+model Reservation {
+  id                String   @id @default(cuid())
+  reservationCode   String   @unique
+  packageId         String
+  package           TourPackage @relation(fields: [packageId], references: [id])
+  clientId          String
+  client            Client @relation(fields: [clientId], references: [id])
+  dateCreated       DateTime @default(now())
+  travelDate        DateTime
+  adultCount        Int
+  passengers        Passenger[]
+  totalAmount       Float
+  status            String   @default("CONFIRMED") // PENDING, CONFIRMED, CANCELLED
+  paymentMethod     String   // CREDIT_CARD, DEBIT_CARD, YAPE
+  couponCode        String?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  @@map("reservations")
+}

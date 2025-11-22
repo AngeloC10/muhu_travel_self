@@ -1,0 +1,31 @@
+import {
+  User, Users, Briefcase, Truck, Package, Calendar,
+  LayoutDashboard, LogOut, Plus, Trash2, Edit2,
+  ChevronRight, ChevronLeft, CreditCard, CheckCircle,
+  Plane, MapPin, DollarSign, Search, Menu,
+  Lock,
+} from 'lucide-react';
+
+export const Icons = {
+  Dashboard: LayoutDashboard,
+  Users: Users,
+  User: User,
+  Employee: Briefcase,
+  Provider: Truck,
+  Package: Package,
+  Reservation: Calendar,
+  Logout: LogOut,
+  Add: Plus,
+  Delete: Trash2,
+  Edit: Edit2,
+  Next: ChevronRight,
+  Prev: ChevronLeft,
+  Payment: CreditCard,
+  Success: CheckCircle,
+  Travel: Plane,
+  Location: MapPin,
+  Money: DollarSign,
+  Search: Search,
+  Menu: Menu,
+  Lock: Lock,
+};
