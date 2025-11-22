@@ -49,7 +49,7 @@ Si prefieres, usa **pgAdmin** que viene con PostgreSQL para crear la BD gráfica
 ### 2.1 Ir a la carpeta del backend
 
 ```powershell
-cd c:\Users\Angelo\Documents\MuhuV1\backend
+cd backend
 ```
 
 ### 2.2 Configurar variables de entorno
@@ -92,8 +92,8 @@ npx prisma db seed
 ```
 
 Esto creará:
-- Usuario Admin (`admin@muhutravel.com` / `admin123`)
-- Usuario Agente (`ventas@muhutravel.com` / `user123`)
+- Usuario Admin (`admin@muhu.com` / `admin123`)
+- Usuario Agente (`agente@muhu.com` / `agent123`)
 - Paquetes turísticos de ejemplo
 - Clientes y proveedores de prueba
 
@@ -159,10 +159,7 @@ VITE v6.0.0  ready in 250 ms
 
 1. Abre **http://localhost:5173**
 2. Verás la pantalla de login
-3. Usa estas credenciales:
-   - **Email:** `admin@muhutravel.com`
-   - **Contraseña:** `admin123`
-
+3. Usa las credenciales que aparecen en pantalla.
 4. ¡Listo! Ya estás dentro de la aplicación
 
 ---
