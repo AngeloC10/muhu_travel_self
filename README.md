@@ -1,20 +1,78 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# 🌍 Muhu Travel Management System
 
-# Run and deploy your AI Studio app
+A comprehensive **CRM and Reservation Management System** designed specifically for travel agencies. This application streamlines the process of managing clients, reservations, tour packages, and internal staff.
 
-This contains everything you need to run your app locally.
+![Muhu Travel Banner](https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=2021&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)
 
-View your app in AI Studio: https://ai.studio/apps/temp/1
+## ✨ Key Features
 
-## Run Locally
+- **🔐 Role-Based Access Control (RBAC)**
+  - **Admins**: Full system control, user management, and sensitive data access.
+  - **Agents**: Focused interface for sales, client management, and reservations.
+  
+- **📅 Reservation Management**
+  - Complete booking lifecycle management.
+  - Passenger details, payment tracking, and status updates.
 
-**Prerequisites:**  Node.js
+- **👥 Customer Relationship Management (CRM)**
+  - Centralized client database.
+  - History of interactions and bookings.
 
+- **📦 Tour Package Management**
+  - Create and manage travel packages with itineraries, pricing, and availability.
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+- **🏢 Enterprise Resource Planning**
+  - Manage Employees and external Providers (Hotels, Transport, Guides).
+
+- **📊 Dashboard & Analytics**
+  - Real-time insights into sales performance and upcoming trips.
+
+## 🛠️ Technology Stack
+
+### Frontend
+- **Framework**: [React](https://reactjs.org/) with [Vite](https://vitejs.dev/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Routing**: React Router DOM
+
+### Backend
+- **Runtime**: [Node.js](https://nodejs.org/)
+- **Framework**: [Express](https://expressjs.com/)
+- **Database**: [PostgreSQL](https://www.postgresql.org/)
+- **ORM**: [Prisma](https://www.prisma.io/)
+- **Authentication**: JWT (JSON Web Tokens) & Bcrypt
+
+## 🚀 Getting Started
+
+For detailed instructions on how to set up the project locally (Database, Backend, and Frontend), please refer to our **Setup Guide**:
+
+👉 **[READ THE SETUP GUIDE](./SETUP_GUIDE.md)**
+
+## 📂 Project Structure
+
+```
+MuhuV1/
+├── backend/                # Express Server & Prisma ORM
+│   ├── prisma/             # Database Schema & Seeds
+│   └── src/
+│       ├── controllers/    # Business Logic
+│       ├── routes/         # API Endpoints
+│       └── middleware/     # Auth & Validation
+├── src/                    # React Frontend
+│   ├── components/         # Reusable UI Components
+│   ├── pages/              # Application Views
+│   ├── context/            # Global State (Auth)
+│   └── services/           # API Integration
+└── SETUP_GUIDE.md          # Installation Instructions
+```
+
+## 🔒 Security Features
+
+- **Secure Authentication**: Passwords are hashed using bcrypt.
+- **Admin Authorization**: New account creation requires Admin approval.
+- **Protected Routes**: Frontend routes are guarded based on authentication and role.
+- **API Security**: Backend endpoints verify JWT tokens.
+
+---
+
+© 2024 Muhu Travel. All rights reserved.
